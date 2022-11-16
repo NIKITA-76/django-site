@@ -15,7 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from blog_app.views import first_page
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('welcome/', first_page),
 ]
