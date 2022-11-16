@@ -1,1 +1,2 @@
 # django-blog
+somw changes 
