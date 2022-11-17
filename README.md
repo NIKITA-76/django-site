@@ -1,2 +1,2 @@
 # django-blog
-somw changes 
+I create this rep, for learning freamwork Django
