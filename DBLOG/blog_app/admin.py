@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import ModelPost
 
-# Register your models here.
+
+@admin.register(ModelPost)
+class MPAdmin(admin.ModelAdmin):
+    list_display = ('title', )
