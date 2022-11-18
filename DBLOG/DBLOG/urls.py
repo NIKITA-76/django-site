@@ -18,8 +18,13 @@ from django.urls import path
 from blog_app import views
 
 
+
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('', views.first_page),
+    path('admin/', admin.site.urls),
     path('messenger/', views.mess_page),
+    path('tg_bot/', views.tgBot_page),
+    path('kv_app/', views.KivyApp_page),
 ]
+
