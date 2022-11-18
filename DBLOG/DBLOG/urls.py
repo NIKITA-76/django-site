@@ -15,8 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from blog_app.views import first_page
+from blog_app import views
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', first_page),
+    path('', views.first_page),
+    path('messenger/', views.mess_page),
 ]
