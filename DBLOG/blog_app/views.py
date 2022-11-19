@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponseNotFound
 
 
 def first_page(request):
@@ -15,3 +16,7 @@ def tgBot_page(request):
 
 def KivyApp_page(request):
     return render(request, 'KivyApp_page.html')
+
+
+def page_not_found(request, exception):
+    return HttpResponseNotFound("Страница не найдена брат")
