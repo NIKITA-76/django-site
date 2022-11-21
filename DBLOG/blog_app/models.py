@@ -2,9 +2,10 @@ from django.db import models
 
 
 class ModelPost(models.Model):
-    author = models.CharField('Автор записи', max_length=100, null="dsf")
-    title = models.CharField('Заголовок записи', max_length=500, null="dsf")
-
-    def __str__(self):
-        return self.title
+    title = models.CharField('Заголовок записи', max_length=100, null=False)
+    content = models.TextField(null=True)
+    photo = models.ImageField(upload_to='photo/%Y/%m/%d/', blank=True)
+    time_create = models.DateTimeField(auto_now=True)
+    time_update = models.DateTimeField(auto_now=True)
+    is_published = models.BooleanField(default=False)
 
