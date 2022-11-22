@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponseNotFound
+from .models import *
 
 
 def first_page(request):
-    return render(request, 'main.html')
+    posts = ModelPost.objects.all()
+    return render(request, 'main.html', {'posts': posts})
 
 
 def mess_page(request):
@@ -20,5 +22,3 @@ def KivyApp_page(request):
 
 def page_not_found(request, exception):
     return HttpResponseNotFound("Страница не найдена брат")
-
-
