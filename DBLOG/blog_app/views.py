@@ -3,7 +3,7 @@ from django.http import HttpResponseNotFound
 
 
 def first_page(request):
-    return render(request, 'first_page.html')
+    return render(request, 'main.html')
 
 
 def mess_page(request):
@@ -20,3 +20,5 @@ def KivyApp_page(request):
 
 def page_not_found(request, exception):
     return HttpResponseNotFound("Страница не найдена брат")
+
+
