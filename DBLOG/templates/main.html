@@ -12,6 +12,17 @@
 <h2><a href="/kv_app">Kivy app</a></h2>
 
 {% block content %}
+
+
+<ul>
+    {% for p in posts %}
+    <li>
+        <h2><a href= {{p.link}}> {{p.title}} </a></h2>
+        <p>{{p.description}}</p>
+    </li>
+    {% endfor %}
+</ul>
+
 {% endblock %}
 
 
