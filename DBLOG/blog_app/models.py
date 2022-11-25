@@ -16,3 +16,4 @@ class ModelPost(models.Model):
     class Meta:
         verbose_name = 'Project'
         verbose_name_plural = 'Projects'
+        ordering = ['time_create']
