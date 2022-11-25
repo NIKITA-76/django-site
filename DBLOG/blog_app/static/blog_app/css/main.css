@@ -1,0 +1,15 @@
+.animate h2 a::after{
+    content: '';
+    display: block;
+    width: 100%;
+    background-color: #111;
+    height: 1px;
+    transition: all .3s;
+    transform: scale(0);
+
+}
+
+.animate h2 a:hover::after{
+    transform: scale(1);
+
+}
