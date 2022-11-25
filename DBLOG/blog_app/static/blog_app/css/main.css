@@ -1,8 +1,11 @@
+
+
 .animate h2 a::after{
+
     content: '';
     display: block;
     width: 100%;
-    background-color: #111;
+    background-color: #333;
     height: 1px;
     transition: all .3s;
     transform: scale(0);
