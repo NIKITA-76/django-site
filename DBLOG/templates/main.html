@@ -25,6 +25,8 @@
 <nav class="navbar navbar-dark bg-dark d-flex align-items-center justify-content-center">
     <a class="navbar-brand" href="#">POG</a>
 </nav>
+{% block content %}
+
 
 <div class="container-fluid mb-auto" style="height: 130px;">
     <div class="h-100 d-flex align-items-center justify-content-center">
@@ -32,8 +34,6 @@
     </div>
 </div>
 
-
-{% block content %}
 
 <div class="m-auto content" style="width: 900px;">
 
@@ -46,21 +46,21 @@
     </div>
     {% endfor %}
 
+
+
 </div>
-
-
 {% endblock %}
 
 
 
-    <div class="container fixed-bottom" style="width: 900px;">
-        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-            <li class="nav-item"><a href="https://github.com/NIKITA-76 " class="nav-link px-2 text-muted">GITHUB</a></li>
-            <li class="nav-item"><a href="mailto:89522179992.ru@gmail.com" class="nav-link px-2 text-muted">MAIL</a></li>
-        </ul>
-        <p class="text-center text-muted">N76-TEAM</p>
-    </div>
 
+<div class="container fixed-bottom" style="width: 900px;">
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <li class="nav-item"><a href="https://github.com/NIKITA-76 " class="nav-link px-2 text-muted">GITHUB</a></li>
+        <li class="nav-item"><a href="/contact_to_mail" class="nav-link px-2 text-muted">MAIL</a></li>
+    </ul>
+    <p class="text-center text-muted">N76-TEAM</p>
+</div>
 
 
 </body>
