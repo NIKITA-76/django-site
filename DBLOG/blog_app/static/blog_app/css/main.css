@@ -17,3 +17,9 @@
 
 }
 
+.form-label {
+    display: inline-block;
+    min-width: 150px;
+    vertical-align: top;
+}
+
