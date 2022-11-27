@@ -5,19 +5,12 @@ from .models import *
 
 def first_page(request):
     posts = ModelPost.objects.all()
-    return render(request, 'main.html', {'posts': posts})
+    return render(request, 'main.html', {'posts': posts}, )
 
 
-def mess_page(request):
-    return render(request, 'messenger_page.html')
-
-
-def tgBot_page(request):
-    return render(request, 'tgBot_page.html')
-
-
-def KivyApp_page(request):
-    return render(request, 'KivyApp_page.html')
+def contact(request):
+    posts = ModelPost.objects.all()
+    return render(request, 'contact_mail.html', {'posts': posts}, )
 
 
 def page_not_found(request, exception):
