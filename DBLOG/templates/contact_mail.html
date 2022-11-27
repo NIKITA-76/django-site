@@ -10,7 +10,7 @@
 <body>
 
 {% block content %}
-<div class="container-fluid mb-auto" style="height: 130px;">
+<div class="container-fluid mb-auto" style="height: 330px;">
     <div class="d-flex align-items-center justify-content-center">
         <form action="{% url 'contact' %}" method="post">
             {% csrf_token%}
@@ -19,7 +19,9 @@
 
 
             {% endfor %}
-            <button type="submit">Отправить</button>
+            <div class="d-flex align-items-center justify-content-center">
+                <button type="button" class="btn btn-dark">Send e-mail</button>
+            </div>
         </form>
     </div>
 
