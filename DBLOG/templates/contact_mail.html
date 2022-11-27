@@ -11,27 +11,15 @@
 
 {% block content %}
 
-<div class="container-fluid mb-auto" style="height: 130px;">
-    <div class="h-100 d-flex align-items-center justify-content-center">
-        <h1 href="/messenger" class=" text-secondary">Here u can see my projects on Python at this point</h1>
-    </div>
-</div>
+<form action="{% url 'contact' %}" method="post">
+    {% csrf_token%}
+    {{ form.as_p }}
 
-<div class="container-fluid mb-auto">
-    <form>
-        <div class="m-auto content">
-            <label class="h-100 d-flex align-items-center justify-content-center ">Email</label>
+    <button type="submit">Отправить</button>
 
-            <label class="h-100 d-flex align-items-center justify-content-center ">89522179992.ru@gmail.com</label>
-        </div>
-        <div class="m-auto content">
-            <label for="inputPassword" class="h-100 d-flex align-items-center justify-content-center ">Password</label>
-            <div class="m-auto content">
-                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-            </div>
-        </div>
-    </form>
-</div>`
+
+</form>
+
 
 {% endblock %}
 
