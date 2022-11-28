@@ -28,7 +28,8 @@ def contact(request):
 
             })
 
-            send_mail('Contact subj', 'Hello world', '89522179992.ru@gmail.com', ['nikita76twitch.ru@gmail.com'],html_message=html_for_email)
+            send_mail('Contact subj', 'Hello world', '89522179992.ru@gmail.com', ['nikita76twitch.ru@gmail.com'],
+                      html_message=html_for_email)
     else:
         form = forms.SendToMail()
     return render(request, 'contact_mail.html', {'form': form}, )
