@@ -10,7 +10,10 @@
 <body>
 
 {% block content %}
-<div class="container-fluid pt-auto" style="margin-top: 5%; ">
+<div class="container-fluid pt-auto" style="margin-top: 3%; ">
+        <div class="h-100 d-flex align-items-center justify-content-center"  style="margin-bottom: 3%;">
+            <h1 class=" text-secondary">If you want to contact me, you can send a message to my email</h1>
+        </div>
     <div class="d-flex align-items-center justify-content-center">
         <form action="{% url 'contact' %}" method="post">
             {% csrf_token%}
