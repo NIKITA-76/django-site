@@ -9,6 +9,7 @@ from blog_app import forms
 
 def first_page(request):
     posts = ModelPost.objects.all()
+    print(posts)
     return render(request, 'main.html', {'posts': posts}, )
 
 
