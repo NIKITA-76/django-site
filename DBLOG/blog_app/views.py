@@ -13,6 +13,10 @@ def first_page(request):
     return render(request, 'main.html', {'posts': posts}, )
 
 
+def sign_in(request):
+    return render(request, 'sign_in.html')
+
+
 def contact(request):
     if request.method == 'POST':
         form = forms.SendToMail(request.POST)
