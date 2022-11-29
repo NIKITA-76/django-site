@@ -16,25 +16,19 @@
             crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <title>N76-PROJECT</title>
-
-
 </head>
-
 <body>
 
 <nav class="navbar navbar-dark bg-dark d-flex align-items-center justify-content-center">
     <a class="navbar-brand" href="/">N76-PROJECT</a>
 </nav>
+
 {% block content %}
-
-
 <div class="container-fluid mb-auto" style="height: 130px;">
     <div class="h-100 d-flex align-items-center justify-content-center">
-        <h1class=" text-secondary">Here u can see my projects on Python at this point</h1>
+        <h1 class=" text-secondary">Here u can see my projects on Python at this point</h1>
     </div>
 </div>
-
-
 <div class="m-auto content">
 
     {% for p in posts %}
@@ -45,8 +39,6 @@
         <h5>{{p.description}}</h5>
     </div>
     {% endfor %}
-
-
 </div>
 {% endblock %}
 
