@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseNotFound
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
-from django.views.generic import ListView
+from django.views.generic import ListView, CreateView
 
 from blog_app import models
 from blog_app import forms
@@ -14,13 +14,17 @@ class BlogHome(ListView):
     context_object_name = 'posts'
 
 
+class RegisterUser(CreateView):
+    pass
+
+
 def sign_in(request):
     return render(request, 'sign_in.html')
 
 
 def contact(request):
     if request.method == 'POST':
-        form = forms.SendToMail(request.POST)
+        form = forms.SendToMail(data=request.POST)
         if form.is_valid():
             email = form.cleaned_data['email']
             firstName = form.cleaned_data['firstName']
@@ -36,6 +40,7 @@ def contact(request):
 
             send_mail('Contact subj', 'Hello world', '89522179992.ru@gmail.com', ['nikita76twitch.ru@gmail.com'],
                       html_message=html_for_email)
+            form = forms.SendToMail()
     else:
         form = forms.SendToMail()
     return render(request, 'contact_mail.html', {'form': form}, )
