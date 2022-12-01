@@ -34,7 +34,7 @@ EMAIL_HOST_USER = 'f2c159047e9bcf'
 EMAIL_HOST_PASSWORD = '4ccd0509ed531e'
 EMAIL_PORT = '2525'
 
-# Application definition
+# Application deffinition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
