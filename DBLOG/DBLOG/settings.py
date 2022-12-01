@@ -25,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-878h39!3$lotxqm+)f1#@7sdpkvub^anl@!$79mnvf#gxi=ji='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['nikita76.pythonanywhere.com']
 
 EMAIL_HOST = 'smtp.mailtrap.io'
 EMAIL_HOST_USER = 'f2c159047e9bcf'
@@ -82,11 +82,11 @@ WSGI_APPLICATION = 'DBLOG.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
+        'NAME': 'railway',
         'USER': 'postgres',
-        'PASSWORD': 'NIKITA76',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'PASSWORD': 'QPbiGkPEX1RCYPIJ8C8k',
+        'HOST': 'containers-us-west-121.railway.app',
+        'PORT': '7929',
     }
 }
 
