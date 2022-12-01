@@ -2,15 +2,16 @@ from django.shortcuts import render
 from django.http import HttpResponseNotFound
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
-from .models import *
+from django.views.generic import ListView
 
+from blog_app import models
 from blog_app import forms
 
 
-def first_page(request):
-    posts = ModelPost.objects.all()
-    print(posts)
-    return render(request, 'main.html', {'posts': posts}, )
+class BlogHome(ListView):
+    model = models.ModelPost
+    template_name = 'main.html'
+    context_object_name = 'posts'
 
 
 def sign_in(request):
