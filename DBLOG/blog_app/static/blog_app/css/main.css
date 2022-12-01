@@ -23,6 +23,11 @@
     vertical-align: top;
 }
 
+.text{
+    text-align: center;
+
+}
+
 .form-input {
     width: 454px;
     font-size: 16px;
