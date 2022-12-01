@@ -8,5 +8,5 @@ Blue, so far marked with a link to my projects
 
 ## A page for sending an email to my mail, for contacting me
 When you click on the send email button, a message will be sent to my mailbox, using the service smtp.mailtrap.io
-![Image_page_site](https://sun9-87.userapi.com/impg/812UhsXn3E6ppSTx9vxJ1KJ515if-6dqBHPn5Q/JXd0DGmbQog.jpg?size=1918x934&quality=96&sign=6d020e4ba8662f6dd40dd3e830116108&type=album)
+![Image_page_site](https://sun9-39.userapi.com/impg/q7rZzvHyw4XKTqg2kR8Apt_2Z483LYKO4ew_GQ/sb4cnybHAAU.jpg?size=1913x934&quality=96&sign=95f1b25a16ad0f2b42c0a7f4554e8a03&type=album)
 
