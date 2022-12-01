@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link type="text/css" href="{% static 'blog_app/css/main.css'%}" rel="stylesheet">
+    <link rel="icon" href="{% static 'blog_app/img/favicon.ico' %}" type="image/x-icon">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             crossorigin="anonymous"></script>
@@ -23,7 +24,8 @@
         <div class="row">
             <div class="col-sm-8 col-md-7 py-4">
                 <h4 class="text-white">About</h4>
-                <p class="text-muted">At the moment I am developing this website as my portfolio for future hiring.</p>
+                <p class="text-muted">I am python junior, who, in addition to other frameworks, is currently studying
+                    Django. This site is currently one of my main projects.</p>
             </div>
             <div class="col-sm-4 offset-md-1 py-4">
                 <h4 class="text-white">Contact</h4>
@@ -56,7 +58,7 @@
 
     {% for p in posts %}
     <div class="h-100 d-flex align-items-center justify-content-center animate">
-        <h2><a class="text-decoration-none" href={{p.link}}> {{p.title}} </a></h2>
+        <h2><a href= "{{p.link}}" class="text-decoration-none"> {{p.title}} </a></h2>
     </div>
     <div class="h-100 d-flex align-items-center justify-content-center text">
         <h5>{{p.description}}</h5>
@@ -64,7 +66,6 @@
     {% endfor %}
 </div>
 {% endblock %}
-
 
 
 </body>
