@@ -4,7 +4,7 @@ The repository was created to study the django framework. The ultimate goal of t
 
 ## Image of the main (and so far the only) site pages
 Blue, so far marked with a link to my projects
-![Image_page_site](https://sun9-87.userapi.com/impg/hRoDxwhIzR6TEWqXSY2UjsjEVm2rwfTiABJugg/MRxot9JpuaY.jpg?size=1918x963&quality=96&sign=6049b35939f869a4ed69c049561d1f2a&type=album)
+![Image_page_site](https://sun9-44.userapi.com/impg/qIDLEw1id0LXmbr_QlZ7JBIGHSVpC7xgxdBQtA/iMMOubXdLhM.jpg?size=1911x926&quality=96&sign=f8d32f84749712b5043c5c1b64f44829&type=album)
 
 ## A page for sending an email to my mail, for contacting me
 When you click on the send email button, a message will be sent to my mailbox, using the service smtp.mailtrap.io
