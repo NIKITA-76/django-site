@@ -25,16 +25,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-878h39!3$lotxqm+)f1#@7sdpkvub^anl@!$79mnvf#gxi=ji='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['nikita76.pythonanywhere.com']
+ALLOWED_HOSTS = []
 
 EMAIL_HOST = 'smtp.mailtrap.io'
 EMAIL_HOST_USER = 'f2c159047e9bcf'
 EMAIL_HOST_PASSWORD = '4ccd0509ed531e'
 EMAIL_PORT = '2525'
 
-# Application defffinition
+# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog_app'
+    'blog_app',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -69,6 +70,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -78,15 +81,15 @@ WSGI_APPLICATION = 'DBLOG.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
+SOCIAL_AUTH_JSONFIELD_ENABLED = True
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'railway',
+        'NAME': 'postgres',
         'USER': 'postgres',
-        'PASSWORD': 'QPbiGkPEX1RCYPIJ8C8k',
-        'HOST': 'containers-us-west-121.railway.app',
-        'PORT': '7929',
+        'PASSWORD': 'NIKITA76',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -108,6 +111,14 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'social_core.backends.github.GithubOAuth2'
+
+]
+SOCIAL_AUTH_GITHUB_KEY = '82a40b68af83b616f006'
+SOCIAL_AUTH_GITHUB_SECRET = '807f0368efee1b3d2381ac4fb6e7a59cee3900fd'
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
@@ -123,7 +134,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-
+LOGIN_REDIRECT_URL = '/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
