@@ -1,3 +1,4 @@
+from django.contrib.auth import logout
 from django.contrib.auth.views import LoginView, AuthenticationForm
 from django.shortcuts import render, redirect
 from django.http import HttpResponseNotFound
@@ -9,6 +10,7 @@ from blog_app import models
 from blog_app import forms
 
 import blog_app
+
 
 class BlogHome(ListView):
     model = models.ModelPost
@@ -54,3 +56,8 @@ def contact(request):
 
 def page_not_found(request, exception):
     return HttpResponseNotFound("Страница не найдена брат")
+
+
+def logout_user(request):
+    logout(request)
+    return redirect('home')
