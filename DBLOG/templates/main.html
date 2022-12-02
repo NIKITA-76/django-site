@@ -16,7 +16,7 @@
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
     <meta charset="UTF-8">
-    <title>N76-PROJECT</title>
+    <title>dev_N76-PROJECT</title>
 </head>
 <body>
 <div class="bg-dark collapse show" id="navbarHeader" style="">
@@ -24,7 +24,8 @@
         <div class="row">
             <div class="col-sm-8 col-md-7 py-4">
                 <h4 class="text-white">About</h4>
-                <p class="text-muted">I am Tarasov Nikita python junior, who, in addition to other frameworks, is currently studying
+                <p class="text-muted">I am Tarasov Nikita python junior, who, in addition to other frameworks, is
+                    currently studying
                     Django. This site is currently one of my main projects.</p>
             </div>
             <div class="col-sm-4 offset-md-1 py-4">
@@ -40,7 +41,7 @@
 <div class="navbar navbar-dark bg-dark box-shadow">
     <div class="container d-flex justify-content-between">
         <a href="/" class="navbar-brand d-flex align-items-center">
-            <strong>N76-PROJECT</strong>
+            <strong>dev_N76-PROJECT</strong>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
                 aria-controls="navbarHeader" aria-expanded="true" aria-label="Toggle navigation">
@@ -51,7 +52,7 @@
 {% block content %}
 <div class="container-fluid mb-auto" style="height: 130px;">
     <div class="h-100 d-flex align-items-center justify-content-center">
-        <h1 class=" text-secondary">Here u can see my projects on Python at this point</h1>
+        <h1 class=" text-secondary text">Here u can see my projects on Python at this point</h1>
     </div>
 </div>
 <div class="container-fluid mb-auto">
@@ -59,7 +60,7 @@
 
     {% for p in posts %}
     <div class="h-100 d-flex align-items-center justify-content-center animate">
-        <h2 class = "text" ><a href="{{p.link}}" class="text-decoration-none"> {{p.title}} </a></h2>
+        <h2 class="text"><a href="{{p.link}}" class="text-decoration-none"> {{p.title}} </a></h2>
     </div>
     <div class="h-100 d-flex align-items-center justify-content-center text">
         <h5>{{p.description}}</h5>
@@ -69,6 +70,17 @@
 
 </div>
 {% endblock %}
+
+<footer class="foter">
+    <div>
+        {% if request.user.is_authenticated %}
+        <h3><a href="/login" class="text-muted">Hello {{ user.username }}</a></h3>
+        <h3><a href="/logout" class="text-muted">Log out</a></h3>
+        {% else %}
+        <h3><a href="{% url 'social:begin' 'github' %}" class="text-muted">Sign in</a></h3>
+        {% endif %}
+    </div>
+</footer>
 
 
 </body>
