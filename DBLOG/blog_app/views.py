@@ -1,12 +1,14 @@
-from django.shortcuts import render
+from django.contrib.auth.views import LoginView, AuthenticationForm
+from django.shortcuts import render, redirect
 from django.http import HttpResponseNotFound
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
+from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView
-
 from blog_app import models
 from blog_app import forms
 
+import blog_app
 
 class BlogHome(ListView):
     model = models.ModelPost
@@ -14,8 +16,12 @@ class BlogHome(ListView):
     context_object_name = 'posts'
 
 
-class RegisterUser(CreateView):
-    pass
+class LoginUser(LoginView):
+    form_class = blog_app.forms.LoginUserForm
+    template_name = 'login.html'
+
+    def get_success_url(self):
+        return reverse_lazy('home')
 
 
 def sign_in(request):
