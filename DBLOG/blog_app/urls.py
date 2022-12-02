@@ -3,6 +3,7 @@ from blog_app import views
 
 urlpatterns = [
     path('', views.BlogHome.as_view(), name="home"),
+    path('login/', views.LoginUser.as_view(), name="login"),
     path('contact_to_mail/', views.contact, name="contact"),
     path('sign_in/', views.sign_in, name="sign_in"),
 
