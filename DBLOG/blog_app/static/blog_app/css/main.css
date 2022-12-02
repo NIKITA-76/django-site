@@ -33,3 +33,14 @@
     font-size: 16px;
 }
 
+.foter {
+    position: fixed; /* Фиксированное положение */
+    left: 0; bottom: 0; /* Левый нижний угол */
+    padding: 10px; /* Поля вокруг текста */
+    background: #363a40f5; /* Цвет фона */
+    color: #fff; /* Цвет текста */
+    width: 100%; /* Ширина слоя */
+    font-size: 20px;
+    text-align: center;
+   }
+
