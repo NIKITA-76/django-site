@@ -71,16 +71,7 @@
 </div>
 {% endblock %}
 
-<footer class="foter">
-    <div>
-        {% if request.user.is_authenticated %}
-        <h3><a href="/login" class="text-muted">Hello {{ user.username }}</a></h3>
-        <h3><a href="/logout" class="text-muted">Log out</a></h3>
-        {% else %}
-        <h3><a href="{% url 'social:begin' 'github' %}" class="text-muted">Sign in</a></h3>
-        {% endif %}
-    </div>
-</footer>
+
 
 
 </body>
