@@ -49,7 +49,7 @@ def first_page(request):
         }
         """
         var = {"login": request.user.username}
-        hd = {"Authorization": "Bearer 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"}
+        hd = {"Authorization": "Bearer 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"}
 
         r = requests.post('https://api.github.com/graphql', json={'query': query, 'variables': var}, headers=hd)
 
