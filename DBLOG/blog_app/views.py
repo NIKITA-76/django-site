@@ -6,24 +6,70 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView
+
+import requests
+from bs4 import BeautifulSoup
+import json
 from blog_app import models
 from blog_app import forms
 
 import blog_app
 
 
-class BlogHome(ListView):
-    model = models.ModelPost
-    template_name = 'main.html'
-    context_object_name = 'posts'
+def first_page(request):
+    print(request)
+    posts = models.ModelPost.objects.all()
+    dict_r = {}
+    if request.user.is_authenticated:
+        query = """
+        query ($login: String!) {
+          viewer {
+            login
+            name
+          }
+          repositoryOwner(login: $login) {
+            id
+            repositories(
+              isFork: false
+              orderBy: {direction: DESC, field: PUSHED_AT}
+              ownerAffiliations: OWNER
+              last: 100
+            ) {
+              edges {
+                node {
+                  name
+                  description
+                  url
+                  openGraphImageUrl
+                  isFork
+                }
+              }
+            }
+          }
+        }
+        """
+        var = {"login": request.user.username}
+        hd = {"Authorization": "Bearer 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"}
+
+        r = requests.post('https://api.github.com/graphql', json={'query': query, 'variables': var}, headers=hd)
+
+        g = r.json()
+        dict_r = {}
+        for _ in g['data']['repositoryOwner']['repositories']['edges']:
+            description = [_['node']['name'], _['node']['url'], _['node']['description'],
+                           _['node']['openGraphImageUrl']]
+            dict_r[_['node']['name']] = description
+        print(dict_r)
+
+    return render(request, 'main.html', {'posts': posts, 'repos': dict_r}, )
 
 
-class LoginUser(LoginView):
-    form_class = blog_app.forms.LoginUserForm
-    template_name = 'login.html'
-
-    def get_success_url(self):
-        return reverse_lazy('home')
+# class LoginUser(LoginView):
+#     form_class = blog_app.forms.LoginUserForm
+#     template_name = 'login.html'
+#
+#     def get_success_url(self):
+#         return reverse_lazy('home')
 
 
 def sign_in(request):
