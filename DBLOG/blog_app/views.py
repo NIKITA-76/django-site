@@ -17,15 +17,48 @@ import blog_app
 
 
 def first_page(request):
+    print(request)
     posts = models.ModelPost.objects.all()
     dict_r = {}
     if request.user.is_authenticated:
-        username = request.user.username
-        url = f'https://api.github.com/users/{username}/repos'
-        r = requests.request('GET', url, data={})
-        for _ in r.json():
-            description = [_['name'], _['html_url'], _['description']]
-            dict_r[_['name']] = description
+        query = """
+        query ($login: String!) {
+          viewer {
+            login
+            name
+          }
+          repositoryOwner(login: $login) {
+            id
+            repositories(
+              isFork: false
+              orderBy: {direction: DESC, field: PUSHED_AT}
+              ownerAffiliations: OWNER
+              last: 100
+            ) {
+              edges {
+                node {
+                  name
+                  description
+                  url
+                  openGraphImageUrl
+                  isFork
+                }
+              }
+            }
+          }
+        }
+        """
+        var = {"login": request.user.username}
+        hd = {"Authorization": "Bearer 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"}
+
+        r = requests.post('https://api.github.com/graphql', json={'query': query, 'variables': var}, headers=hd)
+
+        g = r.json()
+        dict_r = {}
+        for _ in g['data']['repositoryOwner']['repositories']['edges']:
+            description = [_['node']['name'], _['node']['url'], _['node']['description'],
+                           _['node']['openGraphImageUrl']]
+            dict_r[_['node']['name']] = description
         print(dict_r)
 
     return render(request, 'main.html', {'posts': posts, 'repos': dict_r}, )
@@ -69,8 +102,6 @@ def contact(request):
 
 def page_not_found(request, exception):
     return HttpResponseNotFound("Страница не найдена брат")
-
-
 
 
 def logout_user(request):
