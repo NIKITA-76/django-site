@@ -50,22 +50,32 @@
     </div>
 </div>
 {% block content %}
-<div class="container-fluid mb-auto" style="height: 130px;">
-    <div class="h-100 d-flex align-items-center justify-content-center">
-        <h1 class=" text-secondary text">Here u can see my projects on my GitHub at this point</h1>
+<div class="album py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            {% for url, name in repos.items %}
+            <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                    <img class="card-img-top"
+                         data-src="https://github.com/NIKITA-76/messenger_on_python"
+                         alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"
+                         src="{{name.3}}"
+                         data-holder-rendered="true">
+                    <div class="card-body">
+                        <p class="card-text">{{name.2}}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                            </div>
+                            <small class="text-muted">9 mins</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
     </div>
-</div>
-<div class="container-fluid mb-auto">
-
-    {% for url, name in repos.items %}
-    <div class="h-100 d-flex align-items-center justify-content-center animate">
-        <h2 class="text"><a href="{{name.1}}" class="text-decoration-none"> {{name.0}} </a></h2>
-    </div>
-    <div class="h-100 d-flex align-items-center justify-content-center text">
-        <h5>{{name.2}}</h5>
-    </div>
-    {% endfor %}
-
 </div>
 {% endblock %}
 
