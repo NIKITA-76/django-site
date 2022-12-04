@@ -6,24 +6,37 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView
+
+import requests
+from bs4 import BeautifulSoup
+import json
 from blog_app import models
 from blog_app import forms
 
 import blog_app
 
 
-class BlogHome(ListView):
-    model = models.ModelPost
-    template_name = 'main.html'
-    context_object_name = 'posts'
+def first_page(request):
+    posts = models.ModelPost.objects.all()
+    dict_r = {}
+    if request.user.is_authenticated:
+        username = request.user.username
+        url = f'https://api.github.com/users/{username}/repos'
+        r = requests.request('GET', url, data={})
+        for _ in r.json():
+            description = [_['name'], _['html_url'], _['description']]
+            dict_r[_['name']] = description
+        print(dict_r)
+
+    return render(request, 'main.html', {'posts': posts, 'repos': dict_r}, )
 
 
-class LoginUser(LoginView):
-    form_class = blog_app.forms.LoginUserForm
-    template_name = 'login.html'
-
-    def get_success_url(self):
-        return reverse_lazy('home')
+# class LoginUser(LoginView):
+#     form_class = blog_app.forms.LoginUserForm
+#     template_name = 'login.html'
+#
+#     def get_success_url(self):
+#         return reverse_lazy('home')
 
 
 def sign_in(request):
@@ -56,6 +69,8 @@ def contact(request):
 
 def page_not_found(request, exception):
     return HttpResponseNotFound("Страница не найдена брат")
+
+
 
 
 def logout_user(request):
