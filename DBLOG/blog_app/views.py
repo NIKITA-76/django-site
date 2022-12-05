@@ -49,12 +49,13 @@ def first_page(request):
         }
         """
         var = {"login": request.user.username}
-        hd = {"Authorization": "Bearer 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"}
+        hd = {"Authorization": "Bearer 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"}
 
         r = requests.post('https://api.github.com/graphql', json={'query': query, 'variables': var}, headers=hd)
 
         g = r.json()
         dict_r = {}
+        print(g)
         for _ in g['data']['repositoryOwner']['repositories']['edges']:
             description = [_['node']['name'], _['node']['url'], _['node']['description'],
                            _['node']['openGraphImageUrl']]
