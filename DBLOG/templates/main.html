@@ -1,88 +1,148 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link type="text/css" href="{% static 'blog_app/css/main.css'%}" rel="stylesheet">
-    <link rel="icon" href="{% static 'blog_app/img/favicon.ico' %}" type="image/x-icon">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous"></script>
+    <title>N76-Project</title>
+    <link rel="stylesheet" href="{% static 'blog_app/css/style.css'%}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans&family=Karla:wght@200;300;400&family=Source+Code+Pro&display=swap"
+          rel="stylesheet">
     <meta charset="UTF-8">
-    <title>dev_N76-PROJECT</title>
-</head>
-<body>
-<div class="bg-dark collapse show" id="navbarHeader" style="">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-8 col-md-7 py-4">
-                <h4 class="text-white">About</h4>
-                <p class="text-muted">I am Tarasov Nikita python junior, who, in addition to other frameworks, is
-                    currently studying
-                    Django. This site is currently one of my main projects.</p>
-            </div>
-            <div class="col-sm-4 offset-md-1 py-4">
-                <h4 class="text-white">Contact</h4>
-                <ul class="list-unstyled">
-                    <li><a href="https://github.com/NIKITA-76" class="text-white">Follow on my Github</a></li>
-                    <li><a href="/contact_to_mail" class="text-white">Email me</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="navbar navbar-dark bg-dark box-shadow">
-    <div class="container d-flex justify-content-between">
-        <a href="/" class="navbar-brand d-flex align-items-center">
-            <strong>dev_N76-PROJECT</strong>
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
-                aria-controls="navbarHeader" aria-expanded="true" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
-</div>
-{% block content %}
-<div class="album py-5 bg-light">
-    <div class="container">
-        <div class="row">
-            {% for url, name in repos.items %}
-            <div class="col-md-4">
-                <div class="card mb-4 box-shadow">
-                    <img class="card-img-top"
-                         data-src="https://github.com/NIKITA-76/messenger_on_python"
-                         alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"
-                         src="{{name.3}}"
-                         data-holder-rendered="true">
-                    <div class="card-body">
-                        <p class="card-text">{{name.2}}</p>
+    <meta name="viewport" content="width=1000">
+    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,
+		maximum-scale=1.0, user-scalable=0">
+    <meta name="format-detection" content="telephone=no">
 
+
+    <meta name="description" content="Описание страницы до 140 слов">
+    <meta name="keywords" content="Ключевые слова, до 14, слов">
+    <meta name="robots" content="none">
+
+    <meta name="Author" content="ya">
+    <meta name="Copyright" content="ya">
+    <meta name="Adress" content="moy dom">
+
+    <meta hhtps-equiv="refresh" content="0; url=">
+
+
+</head>
+
+<body>
+<div class="wrapper">
+
+    <header class="header">
+        <div class="header__logo">N76-PROJECT</div>
+        <nav class="header__menu">
+            <ul class="header__list">
+                <li>
+                    <a href="" class="header__link"></a>
+                </li>
+                <li>
+                    <a href="" class="header__link"></a>
+                </li>
+                <li>
+                    <a href="{% url 'social:begin' 'github' %}" class="header__link header__signin">Sign in</a>
+                    <a href="" class="header__link header__signout">Sign out</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="header__burger">
+            <span></span>
+        </div>
+    </header>
+
+    <main class="main">
+        <aside class="sidebar">
+            <nav class="sidebar_menu">
+                <ul class="sidebar__list">
+                    <li>
+                        <a href="" class="sidebar__link">MenuPunkt</a>
+                    </li>
+                    <li>
+                        <a href="" class="sidebar__link">MenuPunkt</a>
+                    </li>
+                    <li>
+                        <a href="" class="sidebar__link">MenuPunkt</a>
+                    </li>
+                    <li>
+                        <a href="" class="sidebar__link">MenuPunkt</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <section class="content">
+
+            <section class="profile">
+                <div class="profile__items">
+                    <div class="profile__item">
+                        <a href="" class="profile__image">
+                            <img src="{{user.3}}" alt="">
+                        </a>
+                        <div class="profile__text">
+                            {% if user.4 == "" %}
+                            *There should have been your description here, but you decided to remain a secretive guy... *
+                            {% else %}
+                            {{ user.4 }}
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
+            </section>
+
+            <section class="content__gallery gallery">
+
+                <div class="gallery__items">
+                    {% for url, name in repos.items %}
+                    <div class="gallery__item">
+                        <a href="" class="gallery__image">
+                            <img src="{{name.3}}" alt="">
+                        </a>
+                        <a href="" class="gallery__text">{{name.2}}</a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__items">
+            <div class="footer__about">
+                <div class="footer__heading">
+                    About
+                </div>
+                <div class="footer__text">
+                    I am Tarasov Nikita python junior, who, in addition to other frameworks,
+                    is currently studying Django.
+                    This site is currently one of my main projects.
+                </div>
             </div>
-            {% endfor %}
+            <div class="footer__nav">
+                <div class="footer__heading">
+                    Contact
+                </div>
+                <nav class="footer__menu">
+                    <ul class="footer__list">
+                        <li>
+                            <a href="" class="footer__link">Follow on my Github</a>
+                        </li>
+                        <li>
+                            <a href="" class="footer__link">Email me</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="footer__copy">
+                Copy,2022
+            </div>
         </div>
-    </div>
+
+    </footer>
+
 </div>
-{% endblock %}
-
-<footer class="foter">
-    <div>
-        {% if request.user.is_authenticated %}
-        <h3><a href="/login" class="text-muted">Hello {{ user.username }}</a></h3>
-        <h3><a href="/logout" class="text-muted">Log out</a></h3>
-        {% else %}
-        <h3><a href="{% url 'social:begin' 'github' %}" class="text-muted">Sign in</a></h3>
-        {% endif %}
-    </div>
-</footer>
-
 </body>
 </html>
