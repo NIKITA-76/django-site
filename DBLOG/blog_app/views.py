@@ -1,11 +1,9 @@
 from django.contrib.auth import logout
-from django.contrib.auth.views import LoginView, AuthenticationForm
+
 from django.shortcuts import render, redirect
 from django.http import HttpResponseNotFound
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
-from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView
 
 import requests
 from bs4 import BeautifulSoup
@@ -18,59 +16,66 @@ import blog_app
 
 def first_page(request):
     print(request)
-    posts = models.ModelPost.objects.all()
+    description_user = []
     dict_r = {}
     if request.user.is_authenticated:
         query = """
-        query ($login: String!) {
-          viewer {
-            login
-            name
-          }
-          repositoryOwner(login: $login) {
-            id
-            repositories(
-              isFork: false
-              orderBy: {direction: DESC, field: PUSHED_AT}
-              ownerAffiliations: OWNER
-              last: 100
-            ) {
-              edges {
-                node {
-                  name
-                  description
-                  url
-                  openGraphImageUrl
-                  isFork
-                }
-              }
-            }
-          }
+        query ($login: String!, $login_avtr: String!) {
+  repositoryOwner(login: $login) {
+    repositories(
+      isFork: false
+      orderBy: {direction: DESC, field: PUSHED_AT}
+      ownerAffiliations: OWNER
+      last: 100
+    ) {
+      edges {
+        node {
+          name
+          description
+          url
+          openGraphImageUrl
+          isFork
+          createdAt
         }
+      }
+    }
+  }
+  user(login: $login_avtr) {
+    createdAt
+    followers {
+      totalCount
+    }
+    name
+    avatarUrl
+    bio
+  }
+}
         """
-        var = {"login": request.user.username}
-        hd = {"Authorization": "Bearer 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"}
+        var = {
+            "login": request.user.username,
+            "login_avtr": request.user.username
+        }
+        hd = {"Authorization": "Bearer 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"}
 
         r = requests.post('https://api.github.com/graphql', json={'query': query, 'variables': var}, headers=hd)
 
         g = r.json()
-        dict_r = {}
-        print(g)
-        for _ in g['data']['repositoryOwner']['repositories']['edges']:
-            description = [_['node']['name'], _['node']['url'], _['node']['description'],
-                           _['node']['openGraphImageUrl']]
-            dict_r[_['node']['name']] = description
+
+        for k, i in g['data']['user'].items():
+            if type(i) == dict:
+                description_user.append(i['totalCount'])
+                continue
+            description_user.append(i)
+
+        for date in g['data']['repositoryOwner']['repositories']['edges']:
+            description = [date['node']['name'], date['node']['url'], date['node']['description'],
+                           date['node']['openGraphImageUrl'],
+                           date['node']['createdAt']]
+            dict_r[date['node']['name']] = description
         print(dict_r)
+        print(description_user)
 
-    return render(request, 'main.html', {'posts': posts, 'repos': dict_r}, )
-
-
-# class LoginUser(LoginView):
-#     form_class = blog_app.forms.LoginUserForm
-#     template_name = 'login.html'
-#
-#     def get_success_url(self):
-#         return reverse_lazy('home')
+    return render(request, 'main.html', {'user': description_user, 'repos': dict_r}, )
 
 
 def sign_in(request):
