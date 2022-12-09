@@ -43,7 +43,7 @@
                 </li>
                 <li>
                     {% if request.user.is_authenticated %}
-                    <a href="" class="header__link header__signout">Sign out</a>
+                    <a href="/logout" class="header__link header__signin">Sign out</a>
                     {% else %}
                     <a href="{% url 'social:begin' 'github' %}" class="header__link header__signin">Sign in</a>
                     {% endif %}
@@ -76,7 +76,7 @@
         </aside>
 
         <section class="content">
-
+            {% if request.user.is_authenticated %}
             <section class="profile">
                 <div class="profile__items">
                     <div class="profile__item">
@@ -93,6 +93,7 @@
                     </div>
                 </div>
             </section>
+            {% endif %}
 
             <section class="content__gallery gallery">
 
