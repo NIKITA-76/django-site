@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-878h39!3$lotxqm+)f1#@7sdpkvub^anl@!$79mnvf#gxi=ji=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["www.n76-project.com"]
 
 EMAIL_HOST = 'smtp.mailtrap.io'
 EMAIL_HOST_USER = 'f2c159047e9bcf'
