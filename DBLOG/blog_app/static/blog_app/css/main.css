@@ -177,7 +177,7 @@ h1, h2, h3, h4, h5, h6 {
 .gallery__items {
   display: grid;
   gap: 60px;
-  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
 }
 .gallery__item {
   display: grid;
@@ -200,7 +200,6 @@ h1, h2, h3, h4, h5, h6 {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  border-radius: 1%;
 }
 .gallery__text {
   color: #000;
