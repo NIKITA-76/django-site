@@ -27,8 +27,7 @@ SECRET_KEY = 'django-insecure-878h39!3$lotxqm+)f1#@7sdpkvub^anl@!$79mnvf#gxi=ji=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALOWED_HOSTS = ['www.n76-project.com']
-
+ALLOWED_HOSTS = []
 
 EMAIL_HOST = 'smtp.mailtrap.io'
 EMAIL_HOST_USER = 'f2c159047e9bcf'
@@ -117,8 +116,8 @@ AUTHENTICATION_BACKENDS = [
     'social_core.backends.github.GithubOAuth2'
 
 ]
-SOCIAL_AUTH_GITHUB_KEY = '82a40b68af83b616f006'
-SOCIAL_AUTH_GITHUB_SECRET = '807f0368efee1b3d2381ac4fb6e7a59cee3900fd'
+SOCIAL_AUTH_GITHUB_KEY = '<>'
+SOCIAL_AUTH_GITHUB_SECRET = '<>'
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
