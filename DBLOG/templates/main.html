@@ -101,7 +101,7 @@
                 <div class="gallery__items">
                     {% for url, name in repos.items %}
                     <div class="gallery__item">
-                        <a href="" class="gallery__image">
+                        <a href="{{name.1}}" class="gallery__image">
                             <img src="{{name.3}}" alt="">
                         </a>
                         <a href="" class="gallery__text">{{name.2}}</a>
