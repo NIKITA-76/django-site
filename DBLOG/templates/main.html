@@ -4,6 +4,7 @@
 <head>
     <title>N76-Project</title>
     <link rel="stylesheet" href="{% static 'blog_app/css/style.css'%}">
+    <link rel="stylesheet" href="{% static 'blog_app/css/media.css'%}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="icon" href="{% static 'blog_app/img/favicon.ico' %}" type="image/x-icon">
@@ -36,12 +37,6 @@
         <div class="header__logo">N76-PROJECT</div>
         <nav class="header__menu">
             <ul class="header__list">
-                <li>
-                    <a href="" class="header__link"></a>
-                </li>
-                <li>
-                    <a href="" class="header__link"></a>
-                </li>
                 <li>
                     {% if request.user.is_authenticated %}
                     <a href="/logout" class="header__link header__signin">Sign out</a>
@@ -99,12 +94,12 @@
             <section class="content__gallery gallery">
 
                 <div class="gallery__items">
-                    {% for url, name in repos.items %}
+                    {% for data in repos %}
                     <div class="gallery__item">
-                        <a href="{{name.1}}" class="gallery__image">
-                            <img src="{{name.3}}" alt="">
+                        <a href="{{data.1}}" class="gallery__image">
+                            <img src="{{data.3}}" alt="">
                         </a>
-                        <a href="" class="gallery__text">{{name.2}}</a>
+                        <a href="" class="gallery__text">{{data.2}}</a>
                     </div>
                     {% endfor %}
                 </div>
