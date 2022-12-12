@@ -1,23 +1,18 @@
 from django.contrib.auth import logout
-
 from django.shortcuts import render, redirect
 from django.http import HttpResponseNotFound
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
-
-import requests
-from bs4 import BeautifulSoup
-import json
-from blog_app import models
 from blog_app import forms
 
-import blog_app
+import requests
+
 
 
 def first_page(request):
     print(request)
+    description = []
     description_user = []
-    dict_r = {}
     if request.user.is_authenticated:
         query = """
         query ($login: String!, $login_avtr: String!) {
@@ -68,14 +63,13 @@ def first_page(request):
             description_user.append(i)
 
         for date in g['data']['repositoryOwner']['repositories']['edges']:
-            description = [date['node']['name'], date['node']['url'], date['node']['description'],
-                           date['node']['openGraphImageUrl'],
-                           date['node']['createdAt']]
-            dict_r[date['node']['name']] = description
-        print(dict_r)
+            description.append([date['node']['name'], date['node']['url'], date['node']['description'],
+                                date['node']['openGraphImageUrl'],
+                                date['node']['createdAt']])
+        print(description)
         print(description_user)
 
-    return render(request, 'main.html', {'user': description_user, 'repos': dict_r}, )
+    return render(request, 'main.html', {'user': description_user, 'repos': description}, )
 
 
 def sign_in(request):
