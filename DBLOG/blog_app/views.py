@@ -8,7 +8,6 @@ from blog_app import forms
 import requests
 
 
-
 def first_page(request):
     print(request)
     description = []
@@ -74,6 +73,10 @@ def first_page(request):
 
 def sign_in(request):
     return render(request, 'sign_in.html')
+
+
+def project_about(request):
+    return render(request, 'project_about.html')
 
 
 def contact(request):
