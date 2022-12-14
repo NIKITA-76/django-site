@@ -75,12 +75,12 @@
             <section class="content__gallery gallery">
 
                 <div class="gallery__items">
-                    {% for data in repos %}
+                    {% for url, name in repos.items %}
                     <div class="gallery__item">
-                        <a href="{{data.1}}" class="gallery__image">
-                            <img src="{{data.3}}" alt="">
+                        <a href="" class="gallery__image">
+                            <img src="{{name.3}}" alt="">
                         </a>
-                        <a href="" class="gallery__text">{{data.2}}</a>
+                        <a href="" class="gallery__text">{{name.2}}</a>
                     </div>
                     {% endfor %}
                 </div>

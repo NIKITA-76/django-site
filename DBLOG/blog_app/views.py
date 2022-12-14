@@ -8,10 +8,12 @@ from blog_app import forms
 import requests
 
 
+
 def first_page(request):
     print(request)
     description = []
     description_user = []
+    dict_r = {}
     if request.user.is_authenticated:
         query = """
         query ($login: String!, $login_avtr: String!) {
@@ -49,7 +51,7 @@ def first_page(request):
             "login": request.user.username,
             "login_avtr": request.user.username
         }
-        hd = {"Authorization": "Bearer <>"}
+        hd = {"Authorization": "Bearer "}
 
         r = requests.post('https://api.github.com/graphql', json={'query': query, 'variables': var}, headers=hd)
 
@@ -62,13 +64,14 @@ def first_page(request):
             description_user.append(i)
 
         for date in g['data']['repositoryOwner']['repositories']['edges']:
-            description.append([date['node']['name'], date['node']['url'], date['node']['description'],
-                                date['node']['openGraphImageUrl'],
-                                date['node']['createdAt']])
-        print(description)
+            description = [date['node']['name'], date['node']['url'], date['node']['description'],
+                           date['node']['openGraphImageUrl'],
+                           date['node']['createdAt']]
+            dict_r[date['node']['name']] = description
+        print(dict_r)
         print(description_user)
 
-    return render(request, 'main.html', {'user': description_user, 'repos': description}, )
+    return render(request, 'main.html', {'user': description_user, 'repos': dict_r}, )
 
 
 def sign_in(request):
