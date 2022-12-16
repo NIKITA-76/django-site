@@ -4,15 +4,12 @@
 <head>
     <title>N76-Project</title>
     <link rel="stylesheet" href="{% static 'blog_app/css/style.css'%}">
-    <link rel="stylesheet" href="{% static 'blog_app/css/media.css'%}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="icon" href="{% static 'blog_app/img/favicon.ico' %}" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans&family=Karla:wght@200;300;400&family=Source+Code+Pro&display=swap"
           rel="stylesheet">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1000">
-    <meta name="viewport" content="width=device-width">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,
 		maximum-scale=1.0, user-scalable=0">
     <meta name="format-detection" content="telephone=no">
@@ -34,7 +31,7 @@
 <body>
 <div class="wrapper">
     <header class="header">
-        <div class="header__logo">N76-PROJECT</div>
+        <a href="/" class="header__logo">N76-PROJECT</a>
         <nav class="header__menu">
             <ul class="header__list">
                 <li>
@@ -50,19 +47,40 @@
             <span></span>
         </div>
     </header>
-    {% block content %}
+
     <main class="main">
+        <aside class="sidebar">
+            <nav class="sidebar_menu">
+                <ul class="sidebar__list">
+                    <li>
+                        <a href="" class="sidebar__link">MenuPunkt</a>
+                    </li>
+                    <li>
+                        <a href="" class="sidebar__link">MenuPunkt</a>
+                    </li>
+                    <li>
+                        <a href="" class="sidebar__link">MenuPunkt</a>
+                    </li>
+                    <li>
+                        <a href="" class="sidebar__link">MenuPunkt</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
         <section class="content">
             {% if request.user.is_authenticated %}
             <section class="profile">
                 <div class="profile__items">
                     <div class="profile__item">
                         <a href="" class="profile__image">
-                            <img src="{{user.3}}" alt="">
+                            <img src="https://avatars.githubusercontent.com/u/73834676?u=e00dd92a03327b1df0a176ca309a3e7bb2811d74&v=4" alt="">
                         </a>
                         <div class="profile__text">
                             {% if user.4 == "" %}
-                            *There should have been your description here, but you decided to remain a secretive guy... *
+                            *There should have been your description here, but you decided to remain a secretive guy...
+
+                            *
                             {% else %}
                             {{ user.4 }}
                             {% endif %}
@@ -77,7 +95,7 @@
                 <div class="gallery__items">
                     {% for url, name in repos.items %}
                     <div class="gallery__item">
-                        <a href="" class="gallery__image">
+                        <a href="{{name.1}}" class="gallery__image">
                             <img src="{{name.3}}" alt="">
                         </a>
                         <a href="" class="gallery__text">{{name.2}}</a>
@@ -95,7 +113,7 @@
                 <div class="footer__heading">
                     About
                 </div>
-                <div class="footer__text">
+                <div class="footer__text block__text">
                     I am Tarasov Nikita python junior, who, in addition to other frameworks,
                     is currently studying Django.
                     This site is currently one of my main projects.
@@ -105,10 +123,10 @@
                 <div class="footer__heading">
                     Contact
                 </div>
-                <nav class="footer__menu">
+                <nav class="footer__menu block__text">
                     <ul class="footer__list">
                         <li>
-                            <a href="https://github.com/NIKITA-76" class="footer__link">Follow on my Github</a>
+                            <a href="https://github.com/NIKITA-76" class="footer__link">My Github</a>
                         </li>
                         <li>
                             <a href="" class="footer__link">Email me</a>
@@ -116,8 +134,14 @@
                     </ul>
                 </nav>
             </div>
+            <!-- Классы -->
             <div class="footer__copy">
-                N76-GROUP
+                <div class="footer__copyitem1">
+                    Copyright © 2022 N76-GROUP
+                </div>
+                <div class="footer__copyitem2">
+                    Developed with love &#9829;
+                </div>
             </div>
         </div>
 
