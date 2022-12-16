@@ -10,8 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans&family=Karla:wght@200;300;400&family=Source+Code+Pro&display=swap"
           rel="stylesheet">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1000">
-    <meta name="viewport" content="width=device-width">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,
 		maximum-scale=1.0, user-scalable=0">
     <meta name="format-detection" content="telephone=no">
@@ -33,7 +31,7 @@
 <body>
 <div class="wrapper">
     <header class="header">
-        <div class="header__logo">N76-PROJECT</div>
+        <a href="/" class="header__logo">N76-PROJECT</a>
         <nav class="header__menu">
             <ul class="header__list">
                 <li>
@@ -113,39 +111,45 @@
         </section>
     </main>
 
-    <footer class="footer">
-        <div class="footer__items">
-            <div class="footer__about">
-                <div class="footer__heading">
-                    About
-                </div>
-                <div class="footer__text">
-                    I am Tarasov Nikita python junior, who, in addition to other frameworks,
-                    is currently studying Django.
-                    This site is currently one of my main projects.
-                </div>
-            </div>
-            <div class="footer__nav">
-                <div class="footer__heading">
-                    Contact
-                </div>
-                <nav class="footer__menu">
-                    <ul class="footer__list">
-                        <li>
-                            <a href="https://github.com/NIKITA-76" class="footer__link">Follow on my Github</a>
-                        </li>
-                        <li>
-                            <a href="" class="footer__link">Email me</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-            <div class="footer__copy">
-                N76-GROUP
-            </div>
-        </div>
-
-    </footer>
+<footer class="footer one">
+				<div class="footer__items">
+					<div class="footer__about">
+						<div class="footer__heading">
+							About
+						</div>
+						<div class="footer__text block__text">
+							I am Tarasov Nikita python junior, who, in addition to other frameworks,
+							is currently studying Django.
+							This site is currently one of my main projects.
+						</div>
+					</div>
+					<div class="footer__nav">
+						<div class="footer__heading">
+							Contact
+						</div>
+						<nav class="footer__menu block__text">
+							<ul class="footer__list">
+								<li>
+									<a href="" class="footer__link">My Github</a>
+								</li>
+								<li>
+									<a href="" class="footer__link">Email me</a>
+								</li>
+							</ul>
+						</nav>
+					</div>
+					<!-- Классы -->
+					<div class="footer__copy">
+						<div class="footer__copyitem1">
+							Copyright © 2022 N76-GROUP
+						</div>
+						<div class="footer__copyitem2">
+							Developed with love &#9829;
+						</div>
+					</div>
+				</div>
+				
+			</footer>
 
 </div>
 </body>
