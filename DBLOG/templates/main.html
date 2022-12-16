@@ -35,12 +35,6 @@
         <nav class="header__menu">
             <ul class="header__list">
                 <li>
-                    <a href="" class="header__link"></a>
-                </li>
-                <li>
-                    <a href="" class="header__link"></a>
-                </li>
-                <li>
                     {% if request.user.is_authenticated %}
                     <a href="/logout" class="header__link header__signin">Sign out</a>
                     {% else %}
