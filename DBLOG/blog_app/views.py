@@ -8,7 +8,6 @@ from blog_app import forms
 import requests
 
 
-
 def first_page(request):
     print(request)
     description = []
@@ -56,7 +55,7 @@ def first_page(request):
         r = requests.post('https://api.github.com/graphql', json={'query': query, 'variables': var}, headers=hd)
 
         g = r.json()
-
+        print(g)
         for k, i in g['data']['user'].items():
             if type(i) == dict:
                 description_user.append(i['totalCount'])
