@@ -8,69 +8,76 @@ from blog_app import forms
 import requests
 
 
-def first_page(request):
-    print(request)
+def get_data(username):
     description = []
     description_user = []
     dict_r = {}
-    if request.user.is_authenticated:
-        query = """
-        query ($login: String!, $login_avtr: String!) {
-  repositoryOwner(login: $login) {
-    repositories(
-      isFork: false
-      orderBy: {direction: DESC, field: PUSHED_AT}
-      ownerAffiliations: OWNER
-      last: 100
-    ) {
-      edges {
-        node {
-          name
-          description
-          url
-          openGraphImageUrl
-          isFork
-          createdAt
+    query = """
+                query ($login: String!, $login_avtr: String!) {
+          repositoryOwner(login: $login) {
+            repositories(
+              isFork: false
+              orderBy: {direction: DESC, field: PUSHED_AT}
+              ownerAffiliations: OWNER
+              last: 100
+            ) {
+              edges {
+                node {
+                  name
+                  description
+                  url
+                  openGraphImageUrl
+                  isFork
+                  createdAt
+                }
+              }
+            }
+          }
+          user(login: $login_avtr) {
+            createdAt
+            followers {
+              totalCount
+            }
+            name
+            avatarUrl
+            bio
+          }
         }
-      }
-    }
-  }
-  user(login: $login_avtr) {
-    createdAt
-    followers {
-      totalCount
-    }
-    name
-    avatarUrl
-    bio
-  }
-}
         """
-        var = {
-            "login": request.user.username,
-            "login_avtr": request.user.username
-        }
-        hd = {"Authorization": "Bearer "}
+    var = {
+        "login": username,
+        "login_avtr": username
+    }
+    hd = {"Authorization": "Bearer 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"}
 
-        r = requests.post('https://api.github.com/graphql', json={'query': query, 'variables': var}, headers=hd)
+    r = requests.post('https://api.github.com/graphql', json={'query': query, 'variables': var}, headers=hd)
 
-        g = r.json()
-        print(g)
-        for k, i in g['data']['user'].items():
-            if type(i) == dict:
-                description_user.append(i['totalCount'])
-                continue
-            description_user.append(i)
+    g = r.json()
+    print(g)
+    for k, i in g['data']['user'].items():
+        if type(i) == dict:
+            description_user.append(i['totalCount'])
+            continue
+        description_user.append(i)
 
-        for date in g['data']['repositoryOwner']['repositories']['edges']:
-            description = [date['node']['name'], date['node']['url'], date['node']['description'],
-                           date['node']['openGraphImageUrl'],
-                           date['node']['createdAt']]
-            dict_r[date['node']['name']] = description
-        print(dict_r)
-        print(description_user)
+    for date in g['data']['repositoryOwner']['repositories']['edges']:
+        description = [date['node']['name'], date['node']['url'], date['node']['description'],
+                       date['node']['openGraphImageUrl'],
+                       date['node']['createdAt']]
+        dict_r[date['node']['name']] = description
+    print(dict_r)
+    print(description_user)
+    return description_user, dict_r
 
-    return render(request, 'main.html', {'user': description_user, 'repos': dict_r}, )
+
+def first_page(request):
+    print(request)
+    print(request.user.username)
+    if request.user.is_authenticated and request.user.username != "admin":
+        description_user, dict_r = get_data(request.user.username)
+        return render(request, 'main.html', {'user': description_user, 'repos': dict_r}, )
+
+    return render(request, 'main.html')
 
 
 def sign_in(request):
