@@ -13,68 +13,64 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,
 		maximum-scale=1.0, user-scalable=0">
     <meta name="format-detection" content="telephone=no">
-
-
     <meta name="description" content="Описание страницы до 140 слов">
     <meta name="keywords" content="Ключевые слова, до 14, слов">
     <meta name="robots" content="none">
-
     <meta name="Author" content="ya">
     <meta name="Copyright" content="ya">
     <meta name="Adress" content="moy dom">
-
     <meta hhtps-equiv="refresh" content="0; url=">
 
+    <script src="https://code.jquery.com//jquery-3.4.1.min.js"></script>
+    <script src="{% static 'blog_app/js/scripts.js' %}"></script>
 
 </head>
 
 <body>
 <div class="wrapper">
+    {% if not request.user.is_authenticated %}
+    <header class="header1">
+        <a href="" class="header__logo">N76-PROJECT</a>
+    </header>
+    {% else %}
     <header class="header">
         <a href="/" class="header__logo">N76-PROJECT</a>
         <nav class="header__menu">
             <ul class="header__list">
                 <li>
-                    {% if request.user.is_authenticated %}
                     <a href="/logout" class="header__link header__signin">Sign out</a>
-                    {% else %}
-                    <a href="{% url 'social:begin' 'github' %}" class="header__link header__signin">Sign in</a>
-                    {% endif %}
                 </li>
             </ul>
         </nav>
-        <div class="header__burger">
+        <div class="header__burger2">
             <span></span>
         </div>
     </header>
+    {% endif %}
+    {% block content %}
+
 
     <main class="main">
-        <aside class="sidebar">
-            <nav class="sidebar_menu">
-                <ul class="sidebar__list">
-                    <li>
-                        <a href="" class="sidebar__link">MenuPunkt</a>
-                    </li>
-                    <li>
-                        <a href="" class="sidebar__link">MenuPunkt</a>
-                    </li>
-                    <li>
-                        <a href="" class="sidebar__link">MenuPunkt</a>
-                    </li>
-                    <li>
-                        <a href="" class="sidebar__link">MenuPunkt</a>
-                    </li>
-                </ul>
-            </nav>
-        </aside>
 
         <section class="content">
-            {% if request.user.is_authenticated %}
+            {% if not request.user.is_authenticated %}
+            <section class="init">
+                <div class="init__block">
+                    <p class="init__h2 signin">​One of the projects of ​two funny guys, which will show your
+                        repositories on github</p>
+                    <span class="init__text signin">*The site is still under development, so... something  could go wrong*</span>
+                    <a href="{% url 'social:begin' 'github' %}" class="init__link signin">Sign in via GitHub</a>
+                </div>
+            </section>
+
+            {% elif request.user.is_authenticated %}
+
             <section class="profile">
                 <div class="profile__items">
                     <div class="profile__item">
                         <a href="" class="profile__image">
-                            <img src="https://avatars.githubusercontent.com/u/73834676?u=e00dd92a03327b1df0a176ca309a3e7bb2811d74&v=4" alt="">
+                            <img src="https://avatars.githubusercontent.com/u/73834676?u=e00dd92a03327b1df0a176ca309a3e7bb2811d74&v=4"
+                                 alt="">
                         </a>
                         <div class="profile__text">
                             {% if user.4 == "" %}
@@ -88,7 +84,7 @@
                     </div>
                 </div>
             </section>
-            {% endif %}
+
 
             <section class="content__gallery gallery">
 
@@ -105,9 +101,10 @@
             </section>
 
         </section>
+        {% endif %}
     </main>
     {% endblock %}
-    <footer class="footer">
+    <footer class="footer one">
         <div class="footer__items">
             <div class="footer__about">
                 <div class="footer__heading">
@@ -126,7 +123,7 @@
                 <nav class="footer__menu block__text">
                     <ul class="footer__list">
                         <li>
-                            <a href="https://github.com/NIKITA-76" class="footer__link">My Github</a>
+                            <a href="" class="footer__link">My Github</a>
                         </li>
                         <li>
                             <a href="" class="footer__link">Email me</a>
@@ -137,7 +134,8 @@
             <!-- Классы -->
             <div class="footer__copy">
                 <div class="footer__copyitem1">
-                    Copyright © 2022 N76-GROUP
+                    <span class="footer__copyright">Copyright © 2022</span>
+                    <span>N76-GROUP</span>
                 </div>
                 <div class="footer__copyitem2">
                     Developed with love &#9829;
