@@ -86,11 +86,11 @@ SOCIAL_AUTH_JSONFIELD_ENABLED = True
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'railway',
+        'NAME': 'postgres',
         'USER': 'postgres',
-        'PASSWORD': 'QPbiGkPEX1RCYPIJ8C8k',
-        'HOST': 'containers-us-west-121.railway.app',
-        'PORT': '7929',
+        'PASSWORD': 'NIKITA76',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -118,7 +118,7 @@ AUTHENTICATION_BACKENDS = [
 
 ]
 SOCIAL_AUTH_GITHUB_KEY = '816a17c6e7871c11801d'
-SOCIAL_AUTH_GITHUB_SECRET = '40c78b3ba336e0b38e3e787290cd86efefdc2100'
+SOCIAL_AUTH_GITHUB_SECRET = '<>'
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
