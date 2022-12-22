@@ -83,13 +83,13 @@ WSGI_APPLICATION = 'DBLOG.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 SOCIAL_AUTH_JSONFIELD_ENABLED = True
 DATABASES = {
-        'default': {
+    'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'railway',
+        'NAME': 'postgres',
         'USER': 'postgres',
-        'PASSWORD': 'QPbiGkPEX1RCYPIJ8C8k',
-        'HOST': 'containers-us-west-121.railway.app',
-        'PORT': '7929',
+        'PASSWORD': 'NIKITA76',
+        'HOST': '10.137.84.60',
+        'PORT': '5432',
     }
 }
 
