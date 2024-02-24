@@ -83,16 +83,16 @@ WSGI_APPLICATION = 'DBLOG.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 SOCIAL_AUTH_JSONFIELD_ENABLED = True
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'NIKITA76',
-        'HOST': '10.137.84.60',
-        'PORT': '5432',
-    }
-}
+# DATABASES = {
+#     'default': {
+#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#        'NAME': 'postgres',
+#        'USER': 'postgres',
+#        'PASSWORD': 'NIKITA76',
+#        'HOST': '10.137.84.60',
+#        'PORT': '5432',
+#    }
+#}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
